@@ -1,0 +1,48 @@
+  <div class="control-group">
+    <%= f.label :firstName, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :firstName, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :lastName, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :lastName, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :middleInit, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :middleInit, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :sex, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :sex,  options_for_select(sex.collect{ |u| [u[0], u[1]] })%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :birthDay, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :birthDay, 'data-behaviour' => 'datepicker' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :homePhone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :homePhone, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :cellPhone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cellPhone, :class => 'text_field' %>
+    </div>
+  </div>

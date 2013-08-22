@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Employeeid:</b>
+  <%= @work_schedule.employeeId %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @work_schedule.date %>
+</p>
+
+<p>
+  <b>Starttime:</b>
+  <%= @work_schedule.startTime %>
+</p>
+
+<p>
+  <b>Endtime:</b>
+  <%= @work_schedule.endTime %>
+</p>
+
+<p>
+  <b>Logintime:</b>
+  <%= @work_schedule.loginTime %>
+</p>
+
+<p>
+  <b>Logouttime:</b>
+  <%= @work_schedule.logoutTime %>
+</p>
+
+<p>
+  <b>Descrepancy:</b>
+  <%= @work_schedule.descrepancy %>
+</p>
+
+
+<%= link_to 'Edit', edit_work_schedule_path(@work_schedule) %> |
+<%= link_to 'Back', work_schedules_path %>

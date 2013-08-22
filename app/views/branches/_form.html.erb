@@ -1,0 +1,43 @@
+<%= form_for @branch, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :manager, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :manager, 
+          options_for_select(Employee.select("p.firstName, p.lastName,e.id").
+                              where("e.jobTitle='Manager' ").
+                             joins("as e inner join people p on e.id = p.personable_id").
+                             order("p.firstName ASC").
+                             collect {|e| [e.firstName+" "+e.lastName, e.id]}),
+          {:include_blank => 'Select'}%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :phoneNumber, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phoneNumber, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :fax, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :fax, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <h4>Address</h4>
+  <%= f.fields_for :address, :html => { :class => 'form-horizontal' } do |address_form| %>
+    <%= render :partial => 'addresses/form', :locals => {:f => address_form}%>
+  <%end%>
+  
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                branches_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  employeeId: 1
+  date: 2013-06-26
+  startTime: 2013-06-26 00:22:25
+  endTime: 2013-06-26 00:22:25
+  loginTime: 2013-06-26 00:22:25
+  logoutTime: 2013-06-26 00:22:25
+  descrepancy: false
+
+two:
+  employeeId: 1
+  date: 2013-06-26
+  startTime: 2013-06-26 00:22:25
+  endTime: 2013-06-26 00:22:25
+  loginTime: 2013-06-26 00:22:25
+  logoutTime: 2013-06-26 00:22:25
+  descrepancy: false

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Codeset:</b>
+  <%= @reference_datum.codeSet %>
+</p>
+
+<p>
+  <b>Codeid:</b>
+  <%= @reference_datum.codeId %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%= @reference_datum.code %>
+</p>
+
+<p>
+  <b>Sortindex:</b>
+  <%= @reference_datum.sortIndex %>
+</p>
+
+
+<%= link_to 'Edit', edit_reference_datum_path(@reference_datum) %> |
+<%= link_to 'Back', reference_data_path %>

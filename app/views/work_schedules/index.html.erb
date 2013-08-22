@@ -1,0 +1,16 @@
+<h1>Work Schedule</h1>
+
+<div id="schedule">
+  <h2 id="month">
+    <%= link_to "<", date: @date.prev_month %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to ">", date: @date.next_month %>
+  </h2>
+  <%= calendar @date do |date| %>
+    <b><%= link_to date.day.to_s, "#"%></b>
+  <% end %>
+</div>
+
+<p><%= link_to "New Schedule", new_work_schedule_path %></p>
+
+<br />

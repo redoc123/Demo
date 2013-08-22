@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  codeSet: MyString
+  codeId: 1
+  code: MyString
+  sortIndex: 1
+
+two:
+  codeSet: MyString
+  codeId: 1
+  code: MyString
+  sortIndex: 1

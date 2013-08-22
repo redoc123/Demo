@@ -1,0 +1,29 @@
+<h1>Listing reference_data</h1>
+
+<table>
+  <tr>
+    <th>Codeset</th>
+    <th>Codeid</th>
+    <th>Code</th>
+    <th>Sortindex</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reference_data.each do |reference_datum| %>
+  <tr>
+    <td><%= reference_datum.codeSet %></td>
+    <td><%= reference_datum.codeId %></td>
+    <td><%= reference_datum.code %></td>
+    <td><%= reference_datum.sortIndex %></td>
+    <td><%= link_to 'Show', reference_datum %></td>
+    <td><%= link_to 'Edit', edit_reference_datum_path(reference_datum) %></td>
+    <td><%= link_to 'Destroy', reference_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Reference datum', new_reference_datum_path %>

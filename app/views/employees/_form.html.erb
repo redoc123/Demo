@@ -1,0 +1,100 @@
+<%= form_for @employee, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <p>
+    <h4> Basic info<h4/>
+      <%= f.fields_for :person, :html => { :class => 'form-horizontal' } do |person_form| %>
+        <%= render :partial => 'people/form', :locals => {:f => person_form}%>
+        <h4>Address</h4>
+        <%= person_form.fields_for :address, :html => { :class => 'form-horizontal' } do |address_form| %>
+          <%= render :partial => 'addresses/form', :locals => {:f => address_form}%>
+        <%end%>
+      <%end%>
+      <h4>Additional Info</h4>
+  </p>
+  <%puts :jobTitleList.class%>
+  <div class="control-group">
+    <%= f.label :jobTitle, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :jobTitle, 
+          options_for_select((ReferenceDatum.select("code").
+                              where(:codeSet=>'JOB_TITLE').
+                              order("sortIndex ASC")).collect {|jt| [jt.code,jt.code]}),
+          {:include_blank => 'Select'}%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :hireDate, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :hireDate , 'data-behaviour' => 'datepicker' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :ssn, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :ssn, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :baseSalary, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :baseSalary, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :commission, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :commission, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :bonus, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :bonus, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :payCycle, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :payCycle, 
+          options_for_select((ReferenceDatum.select("code").
+                              where(:codeSet=>'PAY_CYCLE').
+                              order("sortIndex ASC")).collect {|jt| [jt.code,jt.code]}),
+          {:include_blank => 'Select'}%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :department, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :payCycle, 
+          options_for_select((ReferenceDatum.select("code").
+                               where(:codeSet=>'DEPARTMENT').
+                               order("sortIndex ASC")).collect {|jt| [jt.code,jt.code]}),
+          {:include_blank => 'Select'}%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :branch, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :branch, 
+          options_for_select((Branch.select("name, id").
+                              order("name ASC")).collect {|b| [b.name, b.id]}),
+          {:include_blank => 'Select'}%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :manager, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :manager, 
+          options_for_select((Employee.select("p.firstName, p.lastName, e.id").
+                              where("e.jobTitle='Manager' ").
+                              joins("as e inner join people p on e.id = p.personable_id").
+                              order("p.firstName ASC")).collect {|b| [b.firstName+" "+b.lastName, b.id]}),
+          {:include_blank => 'Select'}%>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                employees_path, :class => 'btn' %>
+  </div>
+<% end %>
